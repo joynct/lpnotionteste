@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Economize com Energia Solar</title>
+  <meta name="description" content="Descubra quanto você pode economizar com energia solar. Faça uma simulação gratuita e comece a economizar hoje mesmo.">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- TÍTULO PRINCIPAL - VIA NOTION -->
+<header id="hero">
+  <div class="hero-background"></div>
+  <div class="hero-content">
+    <h1 id="titulo-principal" class="loading">
+      <span class="loading-skeleton">Carregando título...</span>
+    </h1>
+    <div class="hero-cta">
+      <a href="#formulario" class="btn-primary">Fazer Simulação Gratuita</a>
+    </div>
+  </div>
+</header>
+
+<!-- BANNER - VIA NOTION -->
+<section id="banner">
+  <div class="banner-container">
+    <div class="banner-loading" id="banner-loading">
+      <div class="skeleton-image"></div>
+    </div>
+    <img src="" alt="Imagem promocional de energia solar" id="banner-imagem" style="display: none;" />
+  </div>
+</section>
+
+<!-- DESCRIÇÃO - VIA NOTION -->
+<section id="descricao">
+  <div class="container">
+    <h2 id="descricao-titulo" class="loading">
+      <span class="loading-skeleton">Carregando subtítulo...</span>
+    </h2>
+    <div id="descricao-texto" class="loading">
+      <div class="loading-skeleton">Carregando conteúdo...</div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section id="beneficios">
+  <div class="container">
+    <h2>Por que escolher energia solar?</h2>
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icon">💰</div>
+        <h3>Economia Garantida</h3>
+        <p>Reduza sua conta de luz em até 95% todos os meses</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">🌱</div>
+        <h3>Sustentável</h3>
+        <p>Energia limpa e renovável para um futuro melhor</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icon">⚡</div>
+        <h3>Valorização</h3>
+        <p>Aumente o valor do seu imóvel com energia solar</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO DE CONTATO -->
+<section id="formulario">
+  <div class="container">
+    <div class="form-header">
+      <h2>Faça uma simulação gratuita</h2>
+      <p>Preencha seus dados e descubra quanto você pode economizar com energia solar.</p>
+    </div>
+    
+    <form name="lead-solar" method="POST" data-netlify="true" class="contact-form">
+      <input type="hidden" name="form-name" value="lead-solar" />
+      
+      <div class="form-group">
+        <input type="text" name="nome" placeholder="Seu nome completo" required />
+      </div>
+      
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Seu melhor e-mail" required />
+      </div>
+      
+      <div class="form-group">
+        <input type="tel" name="telefone" placeholder="WhatsApp (com DDD)" required />
+      </div>
+      
+      <div class="form-group">
+        <input type="text" name="cidade" placeholder="Cidade/UF" required />
+      </div>
+      
+      <div class="form-group">
+        <select name="conta_luz" required>
+          <option value="">Valor médio da conta de luz</option>
+          <option value="ate-200">Até R$ 200</option>
+          <option value="200-400">R$ 200 - R$ 400</option>
+          <option value="400-600">R$ 400 - R$ 600</option>
+          <option value="600-1000">R$ 600 - R$ 1.000</option>
+          <option value="acima-1000">Acima de R$ 1.000</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn-submit">
+        <span>Quero economizar agora</span>
+        <div class="btn-loading" style="display: none;">Enviando...</div>
+      </button>
+    </form>
+
+    <div class="form-success" id="form-success" style="display: none;">
+      <div class="success-icon">✅</div>
+      <h3>Obrigado pelo seu interesse!</h3>
+      <p>Entraremos em contato em breve para fazer sua simulação personalizada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Energia Solar</h3>
+        <p>Transformando o futuro através da energia limpa e renovável.</p>
+      </div>
+      <div class="footer-contact">
+        <p><strong>Endereço:</strong> Rua Exemplo, nº 123 - Centro - Cidade/UF</p>
+        <p><strong>Atendimento:</strong> Segunda a sexta, das 08h às 18h</p>
+        <p><strong>WhatsApp:</strong> (11) 99999-9999</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Energia Solar. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPT PARA BUSCAR DADOS DO NOTION -->
+<script type="module">
+  // Elementos do DOM
+  const elements = {
+    titulo: document.getElementById("titulo-principal"),
+    bannerImg: document.getElementById("banner-imagem"),
+    bannerLoading: document.getElementById("banner-loading"),
+    descricaoTitulo: document.getElementById("descricao-titulo"),
+    descricaoTexto: document.getElementById("descricao-texto")
+  };
+
+  // Função para remover classe de loading
+  function removeLoading(element) {
+    element.classList.remove('loading');
+  }
+
+  // Função para buscar conteúdo do Notion
+  async function buscarConteudo() {
+    try {
+      const response = await fetch("/api/notion");
+
+      if (!response.ok) {
+        throw new Error(`Erro na API: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      if (!data.results || data.results.length === 0) {
+        throw new Error("Nenhum resultado encontrado");
+      }
+
+      const page = data.results[0].properties;
+
+      // Atualizar título principal
+      if (page.titulo_principal?.title?.[0]?.plain_text) {
+        elements.titulo.textContent = page.titulo_principal.title[0].plain_text;
+        removeLoading(elements.titulo);
+      }
+
+      // Atualizar imagem do banner
+      if (page.banner_url?.url) {
+        elements.bannerImg.src = page.banner_url.url;
+        elements.bannerImg.onload = () => {
+          elements.bannerLoading.style.display = 'none';
+          elements.bannerImg.style.display = 'block';
+          elements.bannerImg.style.animation = 'fadeIn 0.5s ease-in';
+        };
+      }
+
+      // Atualizar título da descrição
+      if (page.descricao_titulo?.rich_text?.[0]?.plain_text) {
+        elements.descricaoTitulo.textContent = page.descricao_titulo.rich_text[0].plain_text;
+        removeLoading(elements.descricaoTitulo);
+      }
+
+      // Atualizar texto da descrição
+      if (page.descricao_texto?.rich_text?.[0]?.plain_text) {
+        elements.descricaoTexto.innerHTML = `<p>${page.descricao_texto.rich_text[0].plain_text}</p>`;
+        removeLoading(elements.descricaoTexto);
+      }
+
+    } catch (error) {
+      console.error("Erro ao buscar conteúdo do Notion:", error);
+      usarConteudoFallback();
+    }
+  }
+
+  // Conteúdo de fallback caso a API falhe
+  function usarConteudoFallback() {
+    elements.titulo.textContent = "Economize até 95% na sua conta de luz com energia solar";
+    removeLoading(elements.titulo);
+
+    elements.bannerImg.src = "https://images.pexels.com/photos/2800832/pexels-photo-2800832.jpeg?auto=compress&cs=tinysrgb&w=1200";
+    elements.bannerImg.onload = () => {
+      elements.bannerLoading.style.display = 'none';
+      elements.bannerImg.style.display = 'block';
+    };
+
+    elements.descricaoTitulo.textContent = "A energia do futuro está aqui";
+    removeLoading(elements.descricaoTitulo);
+
+    elements.descricaoTexto.innerHTML = `
+      <p>Transforme sua casa ou empresa com um sistema de energia solar fotovoltaica e comece a economizar desde o primeiro mês. Nossa equipe especializada oferece soluções completas e personalizadas para suas necessidades energéticas.</p>
+      <p>Com mais de 10 anos de experiência no mercado, já instalamos centenas de sistemas solares que geram economia real e sustentabilidade para nossos clientes.</p>
+    `;
+    removeLoading(elements.descricaoTexto);
+  }
+
+  // Manipulação do formulário
+  const form = document.querySelector('form[name="lead-solar"]');
+  const submitBtn = form.querySelector('.btn-submit');
+  const btnText = submitBtn.querySelector('span');
+  const btnLoading = submitBtn.querySelector('.btn-loading');
+  const successDiv = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    // Mostrar loading
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'block';
+    submitBtn.disabled = true;
+
+    // O Netlify vai processar o formulário automaticamente
+    // Após 2 segundos, mostrar mensagem de sucesso
+    setTimeout(() => {
+      form.style.display = 'none';
+      successDiv.style.display = 'block';
+    }, 2000);
+  });
+
+  // Inicializar busca de conteúdo
+  document.addEventListener('DOMContentLoaded', () => {
+    buscarConteudo();
+  });
+
+  // Smooth scroll para links internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
