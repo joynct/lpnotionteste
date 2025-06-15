@@ -23,19 +23,20 @@ export async function handler(event, context) {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
-        "Notion-Version": "2022-06-28",
+        "Notion-Version": "2022-06-28", // Você pode considerar atualizar esta versão para a mais recente se desejar
         "Content-Type": "application/json",
       },
-  
       body: JSON.stringify({
-    
+        filter: {
+          property: "slug", // Nome da sua coluna 'slug'
+          title: { equals: "landing" } // Filtro para o tipo 'Title' com valor 'landing'
+        }
       })
     });
 
     const data = await response.json();
 
-    // ESTE CONSOLE.LOG AGORA MOSTRARÁ A RESPOSTA REAL DA API DO NOTION NO TERMINAL 2
-    console.log('Dados recebidos do Notion na função Netlify (SEM FILTRO):', JSON.stringify(data, null, 2));
+    console.log('Dados recebidos do Notion na função Netlify (COM FILTRO):', JSON.stringify(data, null, 2));
 
     return {
       statusCode: 200,
