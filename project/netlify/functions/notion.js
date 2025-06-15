@@ -1,6 +1,5 @@
-// notion.js - VERSÃO RESTAURADA E COMPLETA
 export async function handler(event, context) {
-  console.log('--- EXECUTANDO A FUNÇÃO notion.js (VERSÃO COMPLETA) ---'); // O console.log inicial
+  console.log('--- EXECUTANDO A FUNÇÃO notion.js (VERSÃO COMPLETA) ---');
   const databaseId = process.env.VITE_NOTION_DATABASE_ID;
   const token = process.env.VITE_NOTION_TOKEN;
 
@@ -27,18 +26,16 @@ export async function handler(event, context) {
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json",
       },
+  
       body: JSON.stringify({
-        filter: {
-          property: "slug",
-          title: { equals: "landing" } // ESTE É O FILTRO CRÍTICO
-        }
+    
       })
     });
 
     const data = await response.json();
 
     // ESTE CONSOLE.LOG AGORA MOSTRARÁ A RESPOSTA REAL DA API DO NOTION NO TERMINAL 2
-    console.log('Dados recebidos do Notion na função Netlify:', JSON.stringify(data, null, 2));
+    console.log('Dados recebidos do Notion na função Netlify (SEM FILTRO):', JSON.stringify(data, null, 2));
 
     return {
       statusCode: 200,
